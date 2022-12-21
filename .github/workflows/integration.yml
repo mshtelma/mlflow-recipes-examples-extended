@@ -41,7 +41,7 @@ jobs:
       - name: Run Text Classification TF IDF example
         run: |
           cd text-classification-tfidf
-          export MLFLOW_RECIPES_PROFILE=cicd
+          export MLFLOW_RECIPES_PROFILE=local
           mlflow recipes run
 
       - name: Run Text Classification Transformers example
