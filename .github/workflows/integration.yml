@@ -26,7 +26,7 @@ env:
   MLFLOW_CONDA_HOME: /usr/share/miniconda
 
 jobs:
-  regression_recipes:
+  recipes_examples_integration_test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3

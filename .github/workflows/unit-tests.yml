@@ -27,7 +27,7 @@ env:
   SPARK_LOCAL_IP: localhost
 
 jobs:
-  regression_recipes_unit_test:
+  recipes_examples_unit_test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
