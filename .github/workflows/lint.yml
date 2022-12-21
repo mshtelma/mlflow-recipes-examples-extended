@@ -1,4 +1,4 @@
-name: MLflow Recipes Example Tests
+name: MLflow Recipes Example Linting
 
 on:
   push:
