@@ -1,4 +1,4 @@
-name: unit tests
+name: MLflow Recipes Examples Unit Tests
 
 on:
   push:

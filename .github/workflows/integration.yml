@@ -1,4 +1,4 @@
-name: MLflow Recipes Integration Tests
+name: MLflow Recipes Examples Integration Tests
 
 on:
   push:
