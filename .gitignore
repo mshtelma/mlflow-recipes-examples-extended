@@ -1,6 +1,7 @@
 # Mlflow
-mlruns/
-mlartifacts/
+*/mlruns/
+*/mlartifacts/
+*/metadata/
 outputs/
 mlruns.db
 
