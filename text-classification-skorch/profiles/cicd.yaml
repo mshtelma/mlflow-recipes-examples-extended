@@ -1,0 +1,24 @@
+experiment:
+  name: "sklearn_classification_experiment"
+  tracking_uri: "sqlite:///metadata/mlflow/mlruns.db"
+  artifact_location: "./metadata/mlflow/mlartifacts"
+
+# Set the registry server URI. This property is especially useful if you have a registry
+# server that’s different from the tracking server.
+model_registry:
+  registry_uri: "sqlite:////tmp/registry.db"
+  model_name: "complaints_classifier"
+
+SPLIT_RATIOS: [0.8, 0.1, 0.1]
+
+INGEST_CONFIG:
+  using: parquet
+  location: "./data/complaints_cicd.parquet"
+
+INGEST_SCORING_CONFIG:
+  using: parquet
+  location: "./data/complaints_cicd.parquet"
+
+PREDICT_OUTPUT_CONFIG:
+  using: parquet
+  location: "./test_prediction_out.parquet"
