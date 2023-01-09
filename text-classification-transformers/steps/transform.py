@@ -9,9 +9,10 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import FunctionTransformer
 from sentence_transformers import SentenceTransformer
 
+# distilbert-base-uncased-finetuned-sst-2-english
+model = SentenceTransformer("distilbert-base-uncased-finetuned-sst-2-english")
 
 def encode_sentences(X):
-    model = SentenceTransformer("all-MiniLM-L6-v2")
     pool = model.start_multi_process_pool()
     emb = model.encode_multi_process(X.values, pool)
     model.stop_multi_process_pool(pool)

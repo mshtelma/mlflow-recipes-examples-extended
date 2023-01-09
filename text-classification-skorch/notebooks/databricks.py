@@ -2,17 +2,15 @@
 # MAGIC %md
 # MAGIC # MLflow Classification Recipe Databricks Notebook
 # MAGIC This notebook runs the MLflow Classification Recipe on Databricks and inspects its results.
-# MAGIC
+# MAGIC 
 # MAGIC For more information about the MLflow Classification Recipe, including usage examples,
 # MAGIC see the [Classification Recipe overview documentation](https://mlflow.org/docs/latest/recipes.html#classification-recipe)
 # MAGIC and the [Classification Recipe API documentation](https://mlflow.org/docs/latest/python_api/mlflow.recipes.html#module-mlflow.recipes.classification.v1.recipe).
 
 # COMMAND ----------
 
-# MAGIC %pip install -r ../../requirements.txt
+# MAGIC %pip install -r ../../requirements/requirements.txt
 # MAGIC %pip install -r ../requirements.txt
-# MAGIC
-# MAGIC %pip install git+https://github.com/mlflow/mlflow.git
 
 # COMMAND ----------
 
@@ -98,5 +96,3 @@ training_data.describe()
 
 trained_model = r.get_artifact("model")
 print(trained_model)
-
-# COMMAND ----------

@@ -17,7 +17,7 @@ target_col: "category_id"
 #positive_class: 1
 # Sets the primary metric to use to evaluate model performance. This primary metric is used
 # to sort MLflow Runs corresponding to the recipe in the MLflow Tracking UI
-primary_metric: "roc_auc_ovr"
+primary_metric: "f1_score_macro"
 steps:
   ingest: {{INGEST_CONFIG}}
   split:
@@ -32,14 +32,16 @@ steps:
     transformer_method: transformer_fn
   train:
     using: automl/flaml
-    time_budget_secs: 120
+    time_budget_secs: 1024
     # Specifies the method that defines the estimator type and parameters to use for model training
     estimator_method: estimator_fn
   evaluate:
     # Sets performance thresholds that a trained model must meet in order to be eligible for
     # registration to the MLflow Model Registry
     validation_criteria:
-      - metric: roc_auc_ovr
+      - metric: f1_score_macro
+        threshold: 0.6
+      - metric: roc_auc
         threshold: 0.6
       - metric: precision_score
         threshold: 0.6
