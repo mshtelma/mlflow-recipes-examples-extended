@@ -5,6 +5,10 @@ This module defines the following routines used by the 'transform' step of the r
   to the estimator during model inference.
 """
 
+from sklearn.compose import ColumnTransformer
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import FunctionTransformer
+from skorch.hf import HuggingfacePretrainedTokenizer
 
 
 def transformer_fn():

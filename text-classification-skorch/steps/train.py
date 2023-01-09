@@ -12,6 +12,7 @@ from sklearn.metrics import (accuracy_score, f1_score, confusion_matrix,
                              ConfusionMatrixDisplay, classification_report)
 from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import FunctionTransformer
 from skorch import NeuralNetClassifier
 from skorch.callbacks import LRScheduler, ProgressBar
 from skorch.hf import HuggingfacePretrainedTokenizer
@@ -32,12 +33,12 @@ PRETRAINED_MODEL = "distilbert-base-uncased"
 # model hyper-parameters
 OPTMIZER = torch.optim.AdamW
 LR = 5e-5
-MAX_EPOCHS = 3
+MAX_EPOCHS = 1
 CRITERION = nn.CrossEntropyLoss
-BATCH_SIZE = 128
+BATCH_SIZE = 32
 
 # device
-DEVICE = 'cuda' if torch.cuda.is_available() else 'mps' if torch.backends.mps.is_available() else 'cpu'
+DEVICE = 'cuda' if torch.cuda.is_available() else  'cpu'
 
 
 class BertModule(nn.Module):
@@ -62,6 +63,8 @@ def lr_schedule(current_step, num_training_steps=41940):
     assert factor > 0
     return factor
 
+def prepare_data(X, y=None):
+    return X['text'].values
 def estimator_fn(estimator_params: Dict[str, Any] = None):
     """
     Returns an *unfitted* estimator that defines ``fit()`` and ``predict()`` methods.
@@ -69,11 +72,12 @@ def estimator_fn(estimator_params: Dict[str, Any] = None):
     estimators.
     """
     pipeline = Pipeline([
+        ("fn", FunctionTransformer(prepare_data)),
         ('tokenizer', HuggingfacePretrainedTokenizer(TOKENIZER)),
         ('net', NeuralNetClassifier(
             BertModule,
             module__name=PRETRAINED_MODEL,
-            module__num_labels=7, #len(set(y_train)),
+            module__num_labels=20, #len(set(y_train)),
             optimizer=OPTMIZER,
             lr=LR,
             max_epochs=MAX_EPOCHS,
