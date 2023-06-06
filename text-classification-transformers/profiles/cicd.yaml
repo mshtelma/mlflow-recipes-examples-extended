@@ -13,11 +13,11 @@ SPLIT_RATIOS: [0.8, 0.1, 0.1]
 
 INGEST_CONFIG:
   using: parquet
-  location: "./data/complaints_cicd.parquet"
+  location: "./data/ag_news.parquet"
 
 INGEST_SCORING_CONFIG:
   using: parquet
-  location: "./data/complaints_cicd.parquet"
+  location: "./data/ag_news.parquet"
 
 PREDICT_OUTPUT_CONFIG:
   using: parquet

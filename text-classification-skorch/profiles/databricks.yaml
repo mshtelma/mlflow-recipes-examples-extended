@@ -18,14 +18,14 @@ SPLIT_RATIOS: [0.8, 0.1, 0.1]
 INGEST_CONFIG:
   # For different options please read: https://github.com/mlflow/recipes-classification-template#ingest-step
   using: parquet
-  location: "./data/complaints_big.parquet"
+  location: "./data/ag_news.parquet"
 
 INGEST_SCORING_CONFIG:
   # For different options please read: https://github.com/mlflow/recipes-classification-template#batch-scoring
   using: parquet
-  location: "./data/complaints_big.parquet"
+  location: "./data/ag_news.parquet"
 
 PREDICT_OUTPUT_CONFIG:
   # For different options please read: https://github.com/mlflow/recipes-classification-template#predict-step
   using: table
-  location: "complaints_out"
+  location: "news_out"
