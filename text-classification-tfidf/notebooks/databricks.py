@@ -9,8 +9,7 @@
 
 # COMMAND ----------
 
-# MAGIC %pip install -r ../../requirements.txt
-# MAGIC %pip install git+https://github.com/mlflow/mlflow.git
+# MAGIC %pip install -r ../../requirements/requirements.txt
 
 # COMMAND ----------
 
@@ -101,3 +100,5 @@ print(trained_model)
 trained_model.predict(training_data[:2])
 
 # COMMAND ----------
+
+

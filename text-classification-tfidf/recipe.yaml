@@ -32,7 +32,7 @@ steps:
     transformer_method: transformer_fn
   train:
     using: automl/flaml
-    time_budget_secs: 120
+    time_budget_secs: 360
     # Specifies the method that defines the estimator type and parameters to use for model training
     estimator_method: estimator_fn
   evaluate:
@@ -41,7 +41,7 @@ steps:
     validation_criteria:
       - metric: f1_score_macro
         threshold: 0.6
-      - metric: roc_auc_ovr
+      - metric: roc_auc
         threshold: 0.6
 
   register:
